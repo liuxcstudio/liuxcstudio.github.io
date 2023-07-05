@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Liuxc资源站</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a href="#">首页</a></li>
+<li><a href="#">关于</a></li>
+<li><a href="#">服务</a></li>
+<li><a href="#">联系我们</a></li>
+</ul>
+</nav>
+</header>
+
+<section id="banner">
+<h1>欢迎来到Liuxc资源站</h1>
+<p>学习、探索和与我们联系。</p>
+<a href="#" class="button">开始</a>
+</section>
+
+<section id="about">
+<div class="container">
+<h2>关于我们</h2>
+<p>hello，我们是一群学生组成的团队，这个是我们团队成员陈io提出的一个啥也没用的项目</p>
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+<h2>我们的服务</h2>
+<ul>
+<li>资源下载</li>
+<li>资源搜索</li>
+<li>找BT种子链接</li>
+</ul>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<h2>联系我们</h2>
+<form>
+<input type="text" name="name" placeholder="您的姓名">
+<input type="email" name="email" placeholder="您的邮箱">
+<textarea name="message" placeholder="您的留言"></textarea>
+<input type="submit" value=" 发送留言">
+</form>
+</div>
+</section>
+
+<footer>
+<p>© 2021-2023 LiuxcStudio 保留所有权利。</p>
+<p>© 2021-2023 Liuxc资源站   保留所有权利。</p>
+<p>Copyright © 2021-2023 LiuxcStudio 版权所有</p>
+<p>Copyright © 2021-2023 Liuxc资源站 版权所有</p>
+<p>代理域名注册服务机构：EU.org 免费域名(nic.eu.org)</p>
+</footer>
+</body>
+</html>
