@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>404 Not Found</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f2f2f2;
+margin: 0;
+padding: 0;
+text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #666;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>404 - 页面未找到</h1>
+<p>很遗憾，您请求的页面不存在或已移动。</p>
+<p>请检查您输入的网址是否正确，或点击下方按钮返回主页。</p>
+<button onclick="goHome()">返回首页</button>
+</div>
+
+<script>
+function goHome() {
+window.location.href = "/";
+}
+</script>
+</body>
+</html>
