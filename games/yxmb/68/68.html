@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML5切积木益智游戏</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div class="hud">
+<div class="hud__score">
+<div class="score-lbl"></div>
+<div class="cube-count-lbl"></div>
+</div>
+<div class="pause-btn"><div></div></div>
+<div class="slowmo">
+<div class="slowmo__bar"></div>
+</div>
+</div>
+
+<div class="menus">
+<div class="menu menu--main">
+<h1>切块</h1>
+<button type="button" class="play-normal-btn">开始游戏</button>
+<button type="button" class="play-casual-btn">休闲模式</button>
+</div>
+<div class="menu menu--pause">
+<h1>暂停</h1>
+<button type="button" class="resume-btn">重新开始</button>
+<button type="button" class="menu-btn--pause">主菜单</button>
+</div>
+<div class="menu menu--score">
+<h1>游戏结束</h1>
+<h2>分数:</h2>
+<div class="final-score-lbl"></div>
+<div class="high-score-lbl"></div>
+<button type="button" class="play-again-btn">再玩一次</button>
+<button type="button" class="menu-btn--score">主菜单</button>
+</div>
+</div>
+<script src="js/index.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e38422dec20dc53","version":"2023.4.0","r":1,"b":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

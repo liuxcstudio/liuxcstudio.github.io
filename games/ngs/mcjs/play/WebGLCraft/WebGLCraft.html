@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=UTF-8" http-equiv="content-type" />
+<title>MineCraftWebGL</title>
+
+<script src="jquery/jquery-1.9.1.js"></script>
+<script src="lib/rbcoffee.js"></script>
+<script src="coreExtensions.js"></script>
+<script src="lib/jquery.hotkeys.js"></script>
+<script src="lib/jquery.mousewheel.js"></script>
+<script src="lib/RequestAnimationFrame.js"></script>
+<script src="lib/Detector.js"></script>
+<script src="lib/ImprovedNoise.js"></script>
+<script src="lib/pointer.js"></script>
+<script src="lib/Three.js"></script>
+<script src="lib/THREEx.WindowResize.js"></script>
+<script src="blockSelection.js"></script>
+<script src="instructions.js"></script>
+<script src="camera.js"></script>
+<script src="collision.js"></script>
+<script src="minecraft.js"></script>
+<script>$(function () {Minecraft.start()})</script>
+<style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            a {
+                color:blue;
+                text-decoration: none;
+}
+            a:active {
+                color: blue;
+                outline: 1px dotted;
+            }
+            a:visited {
+                text-decoration: none;
+            }
+            a:hover {
+                color: blue;
+                text-decoration: underline;
+            }
+            #blocks img {
+                margin: 0;
+                padding: 0;
+            }
+            #instructions {
+                background: black;
+                width: 500px;
+                margin: 0 auto;
+                color: white;
+                font: 14px Verdana, Arial, Helvetica, Sans-Serif;
+                padding: 30px;
+                position: relative;
+                top: 100px;
+                opacity: .8;
+            }
+            #instructions .image {
+                text-align: center;
+            }
+            #instructions .label {
+                padding: 0 20px;
+            }
+            #instructions h1 {
+                text-align: center;
+            }
+
+            #oldie a { color:#fff }
+
+            body {
+                background-image:url('./textures/bedrock.png');
+                background-color: gray;
+            }
+
+            #minecraft-container {
+                margin: 0 auto;
+                padding: 0;
+                overflow: hidden;
+                /*width: 800px;*/
+                /*height: 600px;*/
+            }
+            #minecraft-blocks {
+                position: relative;
+                top: -32px;
+                margin: auto;
+                background: white;
+                width: 320px;
+                height: 32px;
+                display: none;
+
+            }
+            #minecraft-blocks img {
+                margin: 0;
+                padding: 0;
+            }
+
+            #cursor {
+                display:none;
+                position:absolute;
+                top:50%;
+                left:50%;
+                width:20px;
+                margin-left:-10px;
+                font-size:18px;
+                text-align:center;
+                color:#fff;
+                z-index:2;
+            }
+            #cursor::before {
+                content: '+'
+            }
+            #app {
+                width: 100%;
+                height: 100%;
+            }
+
+
+        </style>
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+<script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-43471535-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+</head>
+<body>
+<div id="app">
+<div id="instructions"></div>
+<div id="cursor"></div>
+<div id="minecraft-container"></div>
+<div id="minecraft-blocks">
+</div>
+</div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e38403e089cdccf","version":"2023.4.0","r":1,"b":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

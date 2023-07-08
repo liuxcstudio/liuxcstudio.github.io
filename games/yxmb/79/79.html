@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="screen-orientation" content>
+<title>HTML5天降红包雨-抢红包</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+
+</style>
+</head>
+<body>
+<div class="main" id="main">
+<div class="container" id="container">
+</div>
+<div class="mask" id="mask">
+<span id="start"><img src="img/a1.png"></span>
+<span id="start_piv"><a href="https://games.imc.re/yxmb/79/zjjl.html"><img src="img/a2.png"></a></span>
+</div>
+<div class="ft"><img src="img/g1.png"></div>
+</div>
+<script src="js/Block.js"></script>
+<script>
+	var oContainer = document.getElementById('container');
+	var block = new Block(oContainer);
+	block.init();
+
+	var mask = document.getElementById('mask');
+	var start = document.getElementById('start');
+	start.onclick = function(){
+		block.start();
+		mask.style.display = 'none';
+	 console.log("111");
+	}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e3842712c177798","version":"2023.4.0","r":1,"b":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 canvas俄罗斯方块2.0</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.black.css">
+<link rel="stylesheet" type="text/css" href="css/4.css">
+</head>
+<body>
+<div class="start-container">
+<p>
+<button class="btn btn-success btn-start" id="btn-start">开始游戏</button>
+<button class="btn btn-info btn-set">游戏设置</button>
+</p>
+</div>
+<div class="game-container">
+
+<div class="panel panel-default timer-panel">
+<div class="panel-heading">
+进行时间
+</div>
+<div class="panel-body">
+<canvas id="timer">绘制时间</canvas>
+</div>
+</div>
+
+<div class="panel panel-default help-panel">
+<div class="panel-body">
+<p>↑ 翻转方块</p>
+<p>↓ 加速下落</p>
+<p>→ 向右移动</p>
+<p>← 向左移动</p>
+</div>
+</div>
+
+<div class="panel panel-default leval-panel">
+<div class="panel-heading">
+当前级别
+</div>
+<div class="panel-body">
+<canvas id="leval">绘制级别</canvas>
+</div>
+</div>
+
+<div class="game-main-panel">
+<canvas id="c_game_main">绘制游戏主体</canvas>
+</div>
+
+<div class="panel panel-default next-panel ">
+<div class="panel-heading">
+下一方块
+</div>
+<div class="panel-body">
+<canvas id="nextshape">绘制下一方块</canvas>
+</div>
+</div>
+
+<div class="panel panel-default setting-panel">
+<div class="panel-body">
+<button class="btn btn-danger btn-game-pause" type="button">暂停</button>
+<button class="btn btn-warning btn-game-setting " type="button">设置</button>
+<button type="button" class="btn btn-primary btn-game-start">开始</button>
+</div>
+</div>
+
+<div class="panel panel-default score-panel">
+<div class="panel-heading">
+当前得分
+</div>
+<div class="panel-body">
+<canvas id="score">绘制得分</canvas>
+</div>
+</div>
+
+<div class="panel panel-default high-score-panel">
+<div class="panel-heading">
+最高得分
+</div>
+<div class="panel-body">
+<canvas id="highscore">绘制最高得分</canvas>
+</div>
+</div>
+</div>
+
+<div class="modal-dialog">
+<div class="modal-body">
+<label for="ck-sound">启用声音</label>
+<input type="checkbox" id="ck-sound">
+<br>
+<br>
+<button id="btn-dialog-close" class="btn">关闭</button>
+</div>
+</div>
+
+
+<script src="js/app.js"></script>
+<script src="js/Board.js"></script>
+
+<script src="js/Canvas.js"></script>
+
+<script src="js/ResourceManager.js"></script>
+
+<script src="js/Block.js"></script>
+
+<script src="js/Shape.js"></script>
+
+<script src="js/Tetris.js"></script>
+<script src="js/Keyboard.js"></script>
+<script src="js/config.js"></script>
+
+<script src="vendor/howler.min.js"></script>
+
+<script src="js/Score.js"></script>
+
+<script src="js/Timer.js"></script>
+
+<script src="js/Leval.js"></script>
+
+<script src="js/Nextshape.js"></script>
+
+<script src="js/highscore.js"></script>
+
+<script type="text/javascript">
+	/*
+		$('.btn-success').click(function(){
+			$(".start-container").css({
+				'display':'none'
+			})
+			$(".game-container").css({
+				'display':'block'
+			})
+		})*/
+	</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e38416af9de7324","version":"2023.4.0","r":1,"b":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

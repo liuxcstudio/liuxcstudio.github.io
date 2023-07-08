@@ -1,0 +1,2 @@
+var Bomb=function(imgArr,x,y,w,h,gameStart){this.img_arry=imgArr;this.x_int=x;this.y_int=y;this.w_int=w;this.h_int=h;this.gs=gameStart;this.fps_num=0;}
+Bomb.prototype={draw:function(){var img_arry=this.img_arry;var x=this.x_int;var y=this.y_int;var w=this.w_int;var h=this.h_int;this.gs.context.drawImage(img_arry[this.fps_num++],x,y,w,h);if(this.fps_num==img_arry.length){this.gs.bo_set.delete(this);}}};

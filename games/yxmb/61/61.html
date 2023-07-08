@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8" />
+<title>HTML5打地鼠小游戏</title>
+<meta name="description" content="这是一个基于HTML5 Canvas和Audio开发的游戏" />
+<meta name="keywords" content="HTML5,Canvas,HTML5游戏, HTML5版打地鼠" />
+<link type="text/css" rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<div id="hitmouse">
+
+<div id="gameCover" class="block background">
+
+<a href="javascript:void(0)" id="btnSound" class="icon">&nbsp;</a>
+
+<a href="javascript:void(0)" id="btnPlay" class="icon">&nbsp;</a>
+
+<a href="javascript:void(0)" id="btnHelp" class="icon">&nbsp;</a>
+
+<a href="javascript:void(0)" id="btnAboutMe" class="icon">&nbsp;</a>
+
+<span id="progressText"></span>
+</div>
+
+<div id="HelpDiv">
+
+<img src="images/help.png" />
+<a href="javascript:void(0)" id="btnBack" class="icon">&nbsp;</a>
+</div>
+
+<div id="gameBody" class="block">
+<div id="gameCanvas" class="block">
+
+<canvas width="750" height="550" id="maincanvas"></canvas>
+</div>
+
+<div id="numberAndPause" class="block">
+
+<div id="numberBefore" class="icon"></div>
+<div id="number"></div>
+
+<a href="javascript:void(0)" id="btnPause" class="icon">&nbsp;</a>
+</div>
+
+<div id="nextLoding">
+
+<span id="currentScore"></span>
+<spqn id="requireScore"></span>
+</div>
+</div>
+
+<div id="gameOver" class="block">
+
+<span id="score"></span>
+
+<a href="javascript:void(0)" id="btnRetry" class="icon">&nbsp;</a>
+
+<a href="javascript:void(0)" id="btnBackToMenu" class="icon">&nbsp;</a>
+</div>
+</div>
+
+<script type="text/javascript" src="myEngine/core/my.js"></script>
+<script type="text/javascript" src="myEngine/component/Component.js"></script>
+<script type="text/javascript" src="myEngine/component/DisplayObject.js"></script>
+<script type="text/javascript" src="myEngine/component/Bitmap.js"></script>
+<script type="text/javascript" src="myEngine/utils/ImageManager.js"></script>
+<script type="text/javascript" src="myEngine/utils/DOM.js"></script>
+<script type="text/javascript" src="myEngine/utils/Math.js"></script>
+<script type="text/javascript" src="myEngine/utils/buzz.js"></script>
+<script type="text/javascript" src="js/resources/images.js"></script>
+<script type="text/javascript" src="js/resources/audios.js"></script>
+<script type="text/javascript" src="js/frames/mouse.js"></script>
+<script type="text/javascript" src="js/frames/star.js"></script>
+<script type="text/javascript" src="js/frames/score.js"></script>
+<script type="text/javascript" src="js/classes/Audio.js"></script>
+<script type="text/javascript" src="js/classes/Animation.js"></script>
+<script type="text/javascript" src="js/classes/star.js"></script>
+<script type="text/javascript" src="js/classes/score.js"></script>
+<script type="text/javascript" src="js/classes/hammer.js"></script>
+<script type="text/javascript" src="js/classes/mouse.js"></script>
+<script type="text/javascript" src="js/classes/MouseHit.js"></script>
+<script type="text/javascript" src="js/classes/UI.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e3842087c62dcbb","version":"2023.4.0","r":1,"b":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

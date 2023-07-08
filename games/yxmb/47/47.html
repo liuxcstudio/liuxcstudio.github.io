@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+<meta name="screen-orientation" content="portrait">
+<title>HTML5兔子吃月饼小游戏</title>
+<link rel="stylesheet" type="text/css" href="static/css/index.css">
+<script src="static/js/zepto.min.js"></script>
+</head>
+<body>
+<div id="container">
+<div id="guidePanel"></div>
+<div id="gamepanel">
+<div class="score-wrap">
+<div class="heart"></div>
+<span id="score">0</span>
+</div>
+<canvas id="stage" width="320" height="568"></canvas>
+</div>
+<div id="gameoverPanel"></div>
+<div id="resultPanel">
+<div class="weixin-share"></div>
+<a href="javascript:void(0)" class="replay"></a>
+<div id="fenghao"></div>
+<div id="scorecontent">
+您在<span id="stime" class="lighttext">2378</span>秒内抢到了<span id="sscore" class="lighttext">21341</span>个月饼<br>超过了<span id="suser" class="lighttext">99%</span>的用户！
+</div>
+<div class="textc">
+<span class="btn1 share">请小伙伴吃月饼</span>
+</div>
+</div>
+</div>
+<script src="static/js/index.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e3841a84e2f71f3","version":"2023.4.0","r":1,"b":1,"token":"3c9953b0a5e54aef93d172f8a1dd2682","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

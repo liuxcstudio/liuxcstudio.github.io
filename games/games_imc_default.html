@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="assets/images/logo.png" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>IMC.RE小游戏平台</title>
+<meta name="keywords" content="IMC.RE小游戏平台" />
+<meta name="description" content="IMC.RE小游戏平台，一套多个小游戏网站合集，采用响应式布局设计，自适应手机移动端，用户体验更好。" />
+<meta name="author" content />
+<meta name="copyright" content />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="viewport" content="width=device-width" />
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="assets/css/material-dashboard.css" rel="stylesheet" />
+
+
+<link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="assets/css/2d7207a20f294df196f3a53cae8a0def.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+<div class="wrapper">
+<div class="sidebar" data-color="purple" data-image="assets/images/404.png">
+
+<div class="logo">
+<a href="https://mine102.eu.org/link/0.html" target="right" class="simple-text"><img src="assets/images/logo.png " width="30" height="30" /> IMC.RE小游戏平台</a>
+</div>
+<div class="sidebar-wrapper">
+<ul class="nav">
+<li class="active">
+<a href="https://mine102.eu.org/link/0.html" target="right">
+<i class="fa fa-twitch"></i>
+<p>全部游戏</p>
+</a>
+</li>
+<li>
+<a href="https://mine102.eu.org/link/moblie.html" target="right">
+<i class="fa fa-houzz"></i>
+<p>手机游戏</p>
+</a>
+</li>
+<li>
+<a href="https://mine102.eu.org/link/1.html" target="right">
+<i class="fa fa-mortar-board"></i>
+<p>益智游戏</p>
+</a>
+</li>
+<li>
+<a href="https://mine102.eu.org/link/2.html" target="right">
+<i class="fa fa-reddit-alien"></i>
+<p>动作游戏</p>
+</a>
+</li>
+<li>
+<a href="https://mine102.eu.org/link/3.html" target="right">
+<i class="fa fa-rocket"></i>
+<p>射击游戏</p>
+</a>
+</li>
+
+<li>
+<a href="https://mine102.eu.org/link/5.html" target="right">
+<i class="fa fa-modx"></i>
+<p>休闲游戏</p>
+</a>
+</li>
+
+<li>
+<a href="https://mine102.eu.org/link/imc.html" target="right">
+<i class="fa fa-user-circle"></i>
+</a>
+</li>
+
+
+</div>
+</div>
+</div>
+<div class="main-panel">
+<nav class="navbar navbar-transparent navbar-absolute" style="background-color: #fff;">
+<div class="container-fluid">
+<div class="navbar-header">
+<button>
+<a href="https://mine102.eu.org/link/0.html" target="right" class="simple-text">
+
+返回主页
+</a>
+</button>
+<button id="click-fullscreen">点击全屏</button>
+<button id="refresh">点击刷新</button>
+<button type="button" class="navbar-toggle" data-toggle="collapse">
+<span class="sr-only">切换导航</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+</div>
+</nav>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+<iframe id="fullscreen" src="https://mine102.eu.org/link/0.html" width="100%" height="820" name="right" style="border: none;"></iframe>
+
+
+<ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-4773172018528901" data-ad-slot="1569846667"></ins>
+<script>
+						
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+<script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js" type="text/javascript"></script>
+
+<script src="assets/js/chartist.min.js"></script>
+<script src="assets/js/material-dashboard.js"></script>
+<script type="text/javascript">
+    	$(document).ready(function(){
+
+$(".nav li").click(function(){
+	
+	$(".nav li").removeClass("active");
+	$(this).addClass("active");
+	
+})
+
+			// Javascript method's body can be found in assets/js/demos.js
+
+    	});
+	</script>
+<script>
+	// 全屏
+    const clickFullscreen = document.getElementById('click-fullscreen');
+    const fullscreen = document.getElementById('fullscreen');
+
+    clickFullscreen.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        fullscreen.requestFullscreen();
+      }
+    });
+	// 刷新
+	document.getElementById('refresh').addEventListener('click', function() {
+    document.getElementById('fullscreen').contentWindow.location.reload(true);
+  });
+  </script>
+</html>
