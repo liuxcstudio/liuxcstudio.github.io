@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>蛇年新春红包</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #c40b00;
+            font-family: 'Microsoft YaHei', sans-serif;
+            cursor: pointer;
+        }
+
+        .red-envelope {
+            font-size: 8rem;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .amount {
+            font-size: 4rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            display: none;
+        }
+
+        .blessing {
+            position: fixed;
+            bottom: 20%;
+            font-size: 1.5rem;
+            color: #fff;
+            text-align: center;
+            display: none;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(3); opacity: 0.5; }
+            100% { transform: scale(5); opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .explode {
+            animation: explode 0.5s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="red-envelope">🧧</div>
+    <div class="amount"></div>
+    <div class="blessing"></div>
+
+    <script>
+        const blessings = [
+            "金蛇狂舞迎新春", 
+            "灵蛇献瑞福满门",
+            "蛇序呈祥财源广",
+            "龙蛇飞舞庆丰年",
+            "金蛇披彩新春到",
+            "银蛇吐瑞百业兴",
+            "灵蛇纳福万事顺",
+            "蛇腾四海步步高"
+        ];
+
+        function getRandomBlessing() {
+            return blessings[Math.floor(Math.random() * blessings.length)];
+        }
+
+        function getRandomAmount() {
+            return Math.floor(Math.random() * 51) + 50; // 50-100随机整数
+        }
+
+        document.body.addEventListener('click', () => {
+            const envelope = document.querySelector('.red-envelope');
+            const amountDiv = document.querySelector('.amount');
+            const blessingDiv = document.querySelector('.blessing');
+            
+            if (!envelope.classList.contains('explode')) {
+                // 开红包
+                envelope.classList.add('explode');
+                setTimeout(() => {
+                    envelope.style.display = 'none';
+                    amountDiv.textContent = `¥${getRandomAmount()}`;
+                    amountDiv.style.display = 'block';
+                    blessingDiv.textContent = getRandomBlessing();
+                    blessingDiv.style.display = 'block';
+                }, 500);
+            } else {
+                // 重置状态
+                envelope.classList.remove('explode');
+                envelope.style.display = 'block';
+                amountDiv.style.display = 'none';
+                blessingDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
