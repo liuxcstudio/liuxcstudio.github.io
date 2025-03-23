@@ -25,7 +25,7 @@
             input.onchange = async (event) => {
                 const file = event.target.files[0];
                 const { data, error } = await supabase.storage
-                    .from('mc-server') // 替换为你的存储桶名称
+                    .from('server-cache') // 替换为你的存储桶名称
                     .upload(`1/${file.name}`, file);
                 if (error) {
                     console.error('上传失败:', error);
@@ -39,7 +39,7 @@
         // 列出存储桶中的文件
         document.getElementById('listFiles').addEventListener('click', async () => {
             const { data, error } = await supabase.storage
-                .from('mc-server') // 替换为你的存储桶名称
+                .from('server-cache') // 替换为你的存储桶名称
                 .list('1'); // 列出 public 文件夹下的文件
             if (error) {
                 console.error('列出文件失败:', error);
@@ -48,7 +48,7 @@
                 fileListDiv.innerHTML = ''; // 清空之前的文件列表
                 data.forEach(file => {
                     const fileLink = document.createElement('a');
-                    fileLink.href = `https://zpqbkasruapgtlomxjlj.supabase.co/storage/v1/object/public/mc-server/public/${file.name}`; // 替换为你的存储桶名称
+                    fileLink.href = `https://zpqbkasruapgtlomxjlj.supabase.co/storage/v1/object/public/cache/public/${file.name}`; // 替换为你的存储桶名称
                     fileLink.textContent = file.name;
                     fileLink.target = '_blank'; // 在新标签页打开
                     fileListDiv.appendChild(fileLink);
