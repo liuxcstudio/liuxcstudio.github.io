@@ -48,7 +48,7 @@
                 fileListDiv.innerHTML = ''; // 清空之前的文件列表
                 data.forEach(file => {
                     const fileLink = document.createElement('a');
-                    fileLink.href = `https://zpqbkasruapgtlomxjlj.supabase.co/storage/v1/object/public/cache/public/${file.name}`; // 替换为你的存储桶名称
+                    fileLink.href = `https://zpqbkasruapgtlomxjlj.supabase.co/storage/v1/object/public/server-cache/public/${file.name}`; // 替换为你的存储桶名称
                     fileLink.textContent = file.name;
                     fileLink.target = '_blank'; // 在新标签页打开
                     fileListDiv.appendChild(fileLink);
