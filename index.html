@@ -4,142 +4,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/favicon.ico" rel="shortcut icon">
-    <title>F.Power游戏站点</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>F.Power资源站</title>
     <style>
-        /* 新增样式 */
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 头部导航 */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* 主体布局 */
         .container {
             display: flex;
-            min-height: calc(100vh - 80px);
-        }
-        
-        aside {
-            width: 220px;
-            background: #f4f4f4;
+            flex: 1;
             padding: 20px;
-            border-right: 1px solid #ddd;
+            gap: 20px;
         }
-        
+
+        /* 侧边栏样式 */
+        aside {
+            width: 240px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
         aside h2 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-bottom: 15px;
+            color: #2c3e50;
         }
-        
+
         aside ul {
             list-style: none;
             padding-left: 0;
         }
-        
-        aside ul li {
+
+        aside li {
             margin: 10px 0;
         }
-        
-        aside ul li a {
+
+        aside a {
             color: #333;
             text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        aside ul li a:hover {
-            color: #007BFF;
-        }
-        
-        main {
-            flex: 1;
-            padding: 20px;
-        }
-        
-        /* 优化横幅 */
-        #banner {
-            background: #007BFF;
-            color: white;
-            padding: 40px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #fff;
-            color: #007BFF;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 4px;
             transition: background 0.3s;
         }
-        
-        .button:hover {
-            background: #e6e6e6;
+
+        aside a:hover {
+            background: #f0f0f0;
         }
-        
-        /* 页脚优化 */
-        footer {
+
+        /* 主内容区域 */
+        main {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* 解析器样式 */
+        .parser-box {
             background: #f8f9fa;
-            padding: 30px 20px;
-            border-top: 1px solid #ddd;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .parser-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .parser-box button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .parser-box button:hover {
+            background: #0056b3;
+        }
+
+        /* 文件列表样式 */
+        .file-list {
+            border-top: 1px solid #eee;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-name {
+            flex: 2;
+        }
+
+        .file-size {
+            color: #666;
+            margin-right: 20px;
+        }
+
+        .file-download {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
             font-size: 0.9em;
         }
-        
-        footer ul {
-            list-style: none;
-            padding-left: 0;
+
+        footer a {
+            color: #99d6ea;
+            text-decoration: none;
         }
-        
-        footer ul li {
-            margin: 8px 0;
+
+        footer img {
+            vertical-align: middle;
+            margin: 10px 0;
+        }
+
+        /* SSL认证标签 */
+        #cc-myssl-id {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 70px;
+            height: 70px;
+            z-index: 99;
+        }
+
+        #cc-myssl-id img {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
+    <!-- 顶部导航 -->
     <header>
         <nav>
             <ul>
-                <li><a href="https://mine102.eu.org/index.html">主页</a></li>   
-                <li><a href="https://mine102.eu.org/about.html">关于</a></li>   
-                <li><a href="https://mine102.eu.org/fuwu.html">服务</a></li>   
-                <li><a href="https://mine102.eu.org/mylianxi.html">联系我们</a></li>   
-                <li><a href="https://space.bilibili.com/3493260764908480">B站主页</a></li> 
-                <li><a href="https://mine102.eu.org/0.pdf">四下资料</a></li> 
-                <li><a href="https://mine102.eu.org/snhc.html">蛇年抽奖</a></li> 
-                <li><a href="https://mine102.eu.org/download.html">程序下载</a></li> 
+                <li><a href="/">首页</a></li>
+                <li><a href="https://mine102.eu.org/about.html">关于本站</a></li> 
+                <li><a href="https://mine102.eu.org/download.html">下载中心</a></li> 
+                <li><a href="https://mine102.eu.org/mylianxi.html">联系站长</a></li> 
+                <li><a href="https://space.bilibili.com/3493260764908480"  target="_blank">B站空间</a></li>
             </ul>
         </nav>
     </header>
-        <main>
-            <section id="banner">
-                <h1>F.Power资源站</h1>
-                <p>学习、探索和与我们联系,告诉你，这是一个11岁小孩建的站点。</p>
-                <a href="https://liuxcstudio.github.io/kaishi.html"  class="button">休闲游戏</a>
-            </section>
-        </main>
-    </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="copyright">
-                <p>© 2021-2023 Flat Power Game Studio 保留所有权利</p>
-                <p>此网站所有文件受GPL3.0许可证的保护</p>
-                <ul>
-                    <li><a href="https://mine102.eu.org/GPL3.0.docx">阅读许可文件</a></li> 
-                    <li><a href="https://app.rainyun.com/dashboard">本站由雨云和GitHub提供计算服务</a></li> 
-                </ul>
-            </div>
+    <!-- 页面主体 -->
+    <div class="container">
+        <!-- 左侧导航 -->
+        <aside>
+            <h2>核心功能</h2>
+            <ul>
+                <li><a href="#">网盘解析</a></li>
+                <li><a href="#">文件搜索</a></li>
+                <li><a href="#">资源推荐</a></li>
+                <li><a href="#">使用教程</a></li>
+            </ul>
             
-            <div class="credits">
-                <img src="https://tool.lu/netcard/"  alt="网络备案图标">
-                <p>代理域名注册服务机构：EU.org 免费域名(nic.eu.org)</p>
-                <p>此网站归属于荔城区第二实验小学五年七班版权所有</p>
-            </div>
-        </div>
-        
-        <!-- SSL安全认证标签 -->
-        <div id="cc-myssl-id" style="position: fixed;right: 0;bottom: 0;width: 70px;height: 70px;z-index: 99;">
-            <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid">
-                <img src="https://static.myssl.com/res/images/myssl-id.png" alt="SSL认证" style="width:100%;height:100%">
-            </a>
-        </div>
+            <h2>快速入口</h2>
+            <ul>
+                <li><a href="https://mine102.eu.org/0.pdf">小学课件</a></li> 
+                <li><a href="https://mine102.eu.org/snhc.html">蛇年抽奖</a></li> 
+                <li><a href="https://liuxcstudio.github.io/kaishi.html">休闲游戏</a></li> 
+            </ul>
+        </aside>
+    <footer>
+        <p>© 2021-2023 F.Power资源站 保留所有权利</p>
+        <p>所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx">GPLv3开源协议</a>  保护</p>
+        <p>技术支持：<a href="https://app.rainyun.com/dashboard">雨云计算服务</a>  优惠码：mochu</p>
+        <img src="https://tool.lu/netcard/"  alt="网络备案">
     </footer>
+
+    <!-- SSL认证标签 -->
+    <div id="cc-myssl-id">
+        <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid">
+            <img src="https://static.myssl.com/res/images/myssl-id.png" alt="SSL安全认证">
+        </a>
+    </div>
 </body>
 </html>
