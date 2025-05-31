@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <title>联系我们 - F.Power资源站</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 头部导航 */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        nav .active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* 主体布局 */
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* 侧边栏样式 */
+        aside {
+            width: 240px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        aside h2 {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        aside ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        aside li {
+            margin: 10px 0;
+        }
+
+        aside a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        aside a:hover {
+            background: #f0f0f0;
+        }
+
+        /* 主内容区域 */
+        main {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* 表单样式 */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 15px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 15px;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #99d6ea;
+            text-decoration: none;
+        }
+
+        footer img {
+            vertical-align: middle;
+            margin: 10px 0;
+        }
+
+        /* SSL认证标签 */
+        #cc-myssl-id {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 70px;
+            height: 70px;
+            z-index: 99;
+        }
+
+        #cc-myssl-id img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="about.html">关于本站</a></li>
+                <li><a href="https://mine102.eu.org/download.html">下载中心</a></li> 
+                <li><a href="mylianxi.html" class="active">联系站长</a></li>
+                <li><a href="https://space.bilibili.com/3493260764908480"  target="_blank">B站空间</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 页面主体 -->
+    <div class="container">
+        <!-- 左侧导航 -->
+        <aside>
+            <h2>联系我们</h2>
+            <ul>
+                <li><a href="#form">在线留言</a></li>
+                <li><a href="#email">邮箱联系</a></li>
+                <li><a href="#bilibili">B站私信</a></li>
+            </ul>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <main>
+            <section id="form" class="contact-form">
+                <h2>在线留言</h2>
+                <form id="contactForm">
+                    <label for="name">您的姓名</label>
+                    <input type="text" id="name" name="name" required />
+
+                    <label for="email">您的邮箱</label>
+                    <input type="email" id="email" name="email" required />
+
+                    <label for="subject">留言主题</label>
+                    <input type="text" id="subject" name="subject" />
+
+                    <label for="message">留言内容</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">发送留言</button>
+
+                    <div id="responseMessage"></div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2021-2023 F.Power资源站 保留所有权利</p>
+        <p>所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx">GPLv3开源协议</a>  保护</p>
+        <p>技术支持：<a href="https://app.rainyun.com/dashboard">雨云计算服务</a>  优惠码：mochu</p>
+        <img src="https://tool.lu/netcard/"  alt="网络备案">
+    </footer>
+
+    <!-- SSL认证标签 -->
+    <div id="cc-myssl-id">
+        <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid">
+            <img src="https://static.myssl.com/res/images/myssl-id.png" alt="SSL安全认证">
+        </a>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // 初始化 EmailJS
+        emailjs.init("YOUR_USER_ID"); // 替换为你的 EmailJS 用户 ID
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+                document.getElementById("responseMessage").innerText = "请填写所有必填字段。";
+                document.getElementById("responseMessage").className = "error-message";
+                return;
+            }
+
+            // 发送邮件
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", { // 替换为你的服务 ID 和模板 ID
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message,
+                to_email: "your_email@163.com" // 替换为你的 163 邮箱地址
+            }).then(
+                function(response) {
+                    console.log("邮件发送成功", response.status, response.text);
+                    document.getElementById("responseMessage").innerText = "留言已成功发送！我们将会尽快回复您。";
+                    document.getElementById("responseMessage").className = "success-message";
+                    document.getElementById("contactForm").reset();
+                },
+                function(error) {
+                    console.log("邮件发送失败", error);
+                    document.getElementById("responseMessage").innerText = "发送失败，请稍后再试
