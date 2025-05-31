@@ -1,47 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<link href="/favicon.ico" rel="shortcut icon">
-<title>F.Power游戏站点</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <title>F.Power游戏站点</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* 新增样式 */
+        .container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+        
+        aside {
+            width: 220px;
+            background: #f4f4f4;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+        
+        aside h2 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        aside ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        aside ul li {
+            margin: 10px 0;
+        }
+        
+        aside ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        aside ul li a:hover {
+            color: #007BFF;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        /* 优化横幅 */
+        #banner {
+            background: #007BFF;
+            color: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #fff;
+            color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #e6e6e6;
+        }
+        
+        /* 页脚优化 */
+        footer {
+            background: #f8f9fa;
+            padding: 30px 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+        }
+        
+        footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        footer ul li {
+            margin: 8px 0;
+        }
+    </style>
 </head>
 <body>
-<header>
-<nav>
-<ul>
-<li><a href="https://mine102.eu.org/index.html">主页</a></li>
-<li><a href="https://mine102.eu.org/about.html">关于</a></li>
-<li><a href="https://mine102.eu.org/fuwu.html">服务</a></li>
-<li><a href="https://mine102.eu.org/mylianxi.html">联系我们</a></li>
-<li><a href="https://space.bilibili.com/3493260764908480?spm_id_from=333.1007.0.0">B站主页</a></li>
-<li><a href="https://mine102.eu.org/0.pdf">（四下，点击下载/在线浏览）</a></li>
-<li><a href="https://mine102.eu.org/snhc.html">蛇年抽奖</a></li>
-<li><a href="https://mine102.eu.org/download.html">（好用的程序下载地）</a></li>
-</ul>
-</nav>
-</header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://mine102.eu.org/index.html">主页</a></li>   
+                <li><a href="https://mine102.eu.org/about.html">关于</a></li>   
+                <li><a href="https://mine102.eu.org/fuwu.html">服务</a></li>   
+                <li><a href="https://mine102.eu.org/mylianxi.html">联系我们</a></li>   
+                <li><a href="https://space.bilibili.com/3493260764908480">B站主页</a></li> 
+                <li><a href="https://mine102.eu.org/0.pdf">四下资料</a></li> 
+                <li><a href="https://mine102.eu.org/snhc.html">蛇年抽奖</a></li> 
+                <li><a href="https://mine102.eu.org/download.html">程序下载</a></li> 
+            </ul>
+        </nav>
+    </header>
+        <main>
+            <section id="banner">
+                <h1>F.Power资源站</h1>
+                <p>学习、探索和与我们联系,告诉你，这是一个11岁小孩建的站点。</p>
+                <a href="https://liuxcstudio.github.io/kaishi.html"  class="button">休闲游戏</a>
+            </section>
+        </main>
+    </div>
 
-<section id="banner">
-<h1>F.Power资源站</h1>
-<p>学习、探索和与我们联系,告诉你，这是一个11岁小孩建的站点。</p>
-<a href="https://liuxcstudio.github.io/kaishi.html" class="button"----休闲游戏--"></a></li>
-</section>
-  
-<footer>
-<p>© Copyright © 2021 - 2023 Flat Power Game Studio resource station. All Rights Reserved.</p>
-<p>© 2021-2023 Flat Power Game Studio 保留所有权利</p>
-<p>此网站所有文件受GPL3.0许可证的保护</p>
-<li><a href="https://mine102.eu.org/GPL3.0.docx">阅读许可文件</a></li>
-<img src="https://tool.lu/netcard/">
-<p>© 2021-2023 F.Power资源站   保留所有权利</p>
-<p>Copyright © 2021-2023 Flat Power Game Studio 版权所有</p>
-<p>Copyright © 2021-2023 F.Power资源站 版权所有</p>
-<p>代理域名注册服务机构：EU.org 免费域名(nic.eu.org)</p>
-<p>此网站归属于荔城区第二实验小学五年七班版权所有</p>
-<li><a href="https://app.rainyun.com/dashboard">本站由雨云和GitHub提供计算服务,优惠码：mochu</a></li>
-<!-- SSL安全认证标签 -->
-<div id="cc-myssl-id" style="position: fixed;right: 0;bottom: 0;width: 70px;height: 70px;z-index: 99;">
-    <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid"><img src="https://static.myssl.com/res/images/myssl-id.png" alt="" style="width:100%;height:100%"></a>
-</div>
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>© 2021-2023 Flat Power Game Studio 保留所有权利</p>
+                <p>此网站所有文件受GPL3.0许可证的保护</p>
+                <ul>
+                    <li><a href="https://mine102.eu.org/GPL3.0.docx">阅读许可文件</a></li> 
+                    <li><a href="https://app.rainyun.com/dashboard">本站由雨云和GitHub提供计算服务</a></li> 
+                </ul>
+            </div>
+            
+            <div class="credits">
+                <img src="https://tool.lu/netcard/"  alt="网络备案图标">
+                <p>代理域名注册服务机构：EU.org 免费域名(nic.eu.org)</p>
+                <p>此网站归属于荔城区第二实验小学五年七班版权所有</p>
+            </div>
+        </div>
+        
+        <!-- SSL安全认证标签 -->
+        <div id="cc-myssl-id" style="position: fixed;right: 0;bottom: 0;width: 70px;height: 70px;z-index: 99;">
+            <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid">
+                <img src="https://static.myssl.com/res/images/myssl-id.png" alt="SSL认证" style="width:100%;height:100%">
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
