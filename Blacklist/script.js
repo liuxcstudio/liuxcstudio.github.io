@@ -1,5 +1,5 @@
 // 替换为你的 Workers 地址
-const WORKER_URL = 'https://auth-worker.your-subdomain.workers.dev'; 
+const WORKER_URL = 'https://polished-snow-fe49.liuxc5602.workers.dev'; 
 
 async function checkPassword() {
   const password = document.getElementById('password').value;
