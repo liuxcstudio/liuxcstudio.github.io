@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>受保护内容</title>
+  <script>
+    // 简单限制直接访问
+    if (!sessionStorage.getItem("authenticated")) {
+      window.location.href = "index.html?direct=1";
+    }
+  </script>
+</head>
+<body>
+  <h1>欢迎访问！</h1>
+  <p>这是受密码保护的内容。</p>
+  <a href="index.html">退出</a>
+</body>
+</html>
