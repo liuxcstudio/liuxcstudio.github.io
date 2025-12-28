@@ -12,7 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', sans-serif;
             background: #f5f7fa;
@@ -101,13 +101,71 @@
             padding: 20px;
         }
 
+        /* 解析器样式 */
+        .parser-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .parser-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .parser-box button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .parser-box button:hover {
+            background: #0056b3;
+        }
+
+        /* 文件列表样式 */
+        .file-list {
+            border-top: 1px solid #eee;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-name {
+            flex: 2;
+        }
+
+        .file-size {
+            color: #666;
+            margin-right: 20px;
+        }
+
+        .file-download {
+            color: #28a745;
+            text-decoration: none;
+        }
+
         /* 页脚样式 */
         footer {
             background: #2c3e50;
             color: white;
             padding: 20px;
             font-size: 0.9em;
-            position: relative;
         }
 
         footer a {
@@ -118,22 +176,6 @@
         footer img {
             vertical-align: middle;
             margin: 10px 0;
-        }
-        
-        /* 安全认证签章容器 */
-        .security-seals {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .seal-item {
-            cursor: pointer;
-            text-align: center;
         }
 
         /* SSL认证标签 */
@@ -161,7 +203,7 @@
                 <li><a href="https://mine102.eu.org/about.html">关于本站</a></li> 
                 <li><a href="https://mine102.eu.org/download.html">下载中心</a></li> 
                 <li><a href="https://mine102.eu.org/mylianxi.html">联系站长</a></li> 
-                <li><a href="https://space.bilibili.com/3493260764908480" target="_blank">B站空间</a></li>
+                <li><a href="https://space.bilibili.com/3493260764908480"  target="_blank">B站空间</a></li>
                 <li><a href="https://mine102.eu.org/Blacklist/index.html">黑名单</a></li> 
             </ul>
         </nav>
@@ -177,40 +219,23 @@
                 <li><a href="https://liuxcstudio.github.io/kaishi.html">休闲游戏</a></li> 
                 <li><a href="https://jx.ziyuanshare.cc/user/parse">百度网盘解析</a></li>
                 <li><a href="https://qk.ziyuanshare.cc">夸克网盘解析</a></li>
+                <li><a href="https://vlink.cc/xiaobai_parse">夸克/百度网盘解析密码发布页</a></li>
                 <li><a href="https://pan.huang1111.cn/s/MN1Oghx">代码存储</a></li>
                 <li><a href="https://mine102.weu.org/F.7z"></a>DOWNLOADMP3</li> 
+
             </ul>
         </aside>
-        
-        <!-- 主内容区 -->
-        <main>
-            <h2>欢迎访问 F.Power资源站</h2>
-            <p>本站提供各种资源下载和实用工具</p>
-        </main>
-    </div>
-
-    <!-- 页脚 -->
-    <footer>
+    <ooter>
         <p>© 2021-2025 F.Power资源站 保留所有权利</p>
-        <p>所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx">GPLv3开源协议</a> 保护</p>
-        <p>技术支持：<a href="https://app.rainyun.com/dashboard">雨云计算服务</a> 优惠码：mochu</p>
-        
-        <!-- 保留的安全认证签章：TrustAsia 和 MySSL -->
-        <div class="security-seals">
-            <div class="seal-item" title="TrustAsia 安全签章" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=myssl.com','TrustAsia 安全签章','height=800,width=470,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')">
-                <img src="https://sealres.trustasia.com/seal/img/1x/seal.png?domain=myssl.com" alt="TrustAsia 安全签章" style="width: 130px;height: auto;">
-            </div>
-            <div class="seal-item" title="MySSL 安全签章" onclick="window.open('https://myssl.com/seal/detail?domain=myssl.com','MySSL安全签章','height=800,width=470,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')">
-                <img src="https://sealres.myssl.com/seal/img/1x/seal.png?domain=myssl.com" alt="MySSL 安全签章" style="width: 100px; height: auto;">
-            </div>
-        </div>
+        <p>所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx">GPLv3开源协议</a>  保护</p>
+        <p>技术支持：<a href="https://app.rainyun.com/dashboard">雨云计算服务</a>  优惠码：mochu</p>
+        <img src="https://tool.lu/netcard/"  alt="网络备案">
     </footer>
 
     <!-- SSL认证标签 -->
     <div id="cc-myssl-id">
         <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid">
             <img src="https://static.myssl.com/res/images/myssl-id.png" alt="SSL安全认证">
-        </a>
     </div>
 </body>
 </html>
