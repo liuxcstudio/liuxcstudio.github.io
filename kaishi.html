@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>休闲游戏 - F.Power资源�?/title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255,255,255,0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            color: #00d4ff;
+            margin-bottom: 24px;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff00cc);
+            border-radius: 2px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #a0a0a0;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .categories {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .category-btn {
+            padding: 14px 32px;
+            border: 3px solid #2a2a2a;
+            background: #1a1a1a;
+            color: #555;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,107,107,0.2), transparent);
+            transition: left 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+        }
+
+        .category-btn:hover::before {
+            left: 100%;
+        }
+
+        .category-btn:hover {
+            color: #00d4ff;
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            color: #ff00cc;
+            border-color: #ff00cc;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .grid-layout::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.01) 2px,
+                    rgba(255,255,255,0.01) 4px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .game-card {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.8s cubic-bezier(0.42, 0, 0.58, 1);
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff00cc);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .game-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: radial-gradient(circle at 30% 30%, #00d4ff, #ff00cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent, transparent, transparent, 
+                #00d4ff, #ff00cc, #00d4ff
+            );
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .game-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .game-card p {
+            font-size: 12px;
+            color: #777;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #ff00cc);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .play-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+        }
+
+        .play-btn:hover::before {
+            left: 100%;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            color: #555;
+            font-size: 11px;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-layout {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>游戏工坊</h1>
+            <p>这里没有千篇一律的模板，只有设计师的个性表达。每款游戏都是一个独特的数字艺术品�?/p>
+        </div>
+
+        <div class="categories">
+            <div class="category-tabs">
+                <button class="category-btn active" onclick="filterGames('all')">全部</button>
+                <button class="category-btn" onclick="filterGames('puzzle')">益智</button>
+                <button class="category-btn" onclick="filterGames('racing')">竞�?/button>
+                <button class="category-btn" onclick="filterGames('action')">动作</button>
+                <button class="category-btn" onclick="filterGames('arcade')">街机</button>
+            </div>
+        </div>
+
+        <div class="grid-layout" id="gridLayout">
+            <div class="game-card" onclick="window.open('game/2048-master/2048.html', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:8-ball" data-width="40" data-height="40"></span>
+                </div>
+                <h3>2048</h3>
+                <p>数字的诗意，合并的艺�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('game/canvas-tetris-master/fangkuai.html', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:crystal-shine" data-width="40" data-height="40"></span>
+                </div>
+                <h3>俄罗斯方�?/h3>
+                <p>像素的舞蹈，永恒的经�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('game/gobang-main/gobang-main', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:board-game" data-width="40" data-height="40"></span>
+                </div>
+                <h3>五子�?/h3>
+                <p>黑白的哲学，智慧的博�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('game/javascript-racer-master/v4.final.html', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:race-car" data-width="40" data-height="40"></span>
+                </div>
+                <h3>飞车竞�?/h3>
+                <p>速度的狂想，引擎的咆�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('game/pacman-canvas-master/index.htm', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:snake" data-width="40" data-height="40"></span>
+                </div>
+                <h3>贪吃�?/h3>
+                <p>像素的贪欲，生命的循�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('game/HexGL-master/hexgl.html', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:racing-microphone" data-width="40" data-height="40"></span>
+                </div>
+                <h3>HexGL</h3>
+                <p>3D的幻象，速度的极�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('xiaoqiu.html', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:ball" data-width="40" data-height="40"></span>
+                </div>
+                <h3>小球游戏</h3>
+                <p>弹跳的韵律，物理的诗�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+
+            <div class="game-card" onclick="window.open('game/Astray-master/index.html', '_blank')">
+                <div class="game-icon">
+                    <span class="iconify" data-icon="game-icons:astray" data-width="40" data-height="40"></span>
+                </div>
+                <h3>Astray</h3>
+                <p>宇宙的迷途，解谜的旅�?/p>
+                <button class="play-btn">开始游�?/button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2021-2025 F.Power资源�?保留所有权�?/p>
+            <p>所有文件受GPLv3开源协议保�?/p>
+            <p>设计师的个性表�?| 技术支持：雨云计算服务 优惠码：mochu</p>
+        </div>
+    </div>
+
+    <script>
+        function filterGames(category) {
+            const cards = document.querySelectorAll('.game-card');
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = '';
+                } else {
+                    const gameName = card.querySelector('h3').textContent.toLowerCase();
+                    let show = false;
+                    
+                    switch(category) {
+                        case 'puzzle':
+                            show = ['2048', '俄罗斯方�?, '五子�?, '贪吃�?].some(name => gameName.includes(name));
+                            break;
+                        case 'racing':
+                            show = ['飞车竞�?, 'HexGL', '小球游戏'].some(name => gameName.includes(name));
+                            break;
+                        case 'action':
+                            show = ['小球游戏', 'Astray'].some(name => gameName.includes(name));
+                            break;
+                        case 'arcade':
+                            show = ['2048', '俄罗斯方�?, '五子�?, '飞车竞�?, '贪吃�?, 'HexGL', '小球游戏', 'Astray'].some(name => gameName.includes(name));
+                            break;
+                    }
+                    
+                    card.style.display = show ? '' : 'none';
+                }
+            });
+        }
+
+        // 加载 Iconfiy 图标
+        window.addEventListener('load', function() {
+            Iconify.addIcon('game-icons:8-ball', {
+                body: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>',
+                width: 24,
+                height: 24
+            });
+        });
+    </script>
+</body>
+</html>

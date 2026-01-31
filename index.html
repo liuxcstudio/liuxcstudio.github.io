@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <title>F.Power资源站</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 头部导航 */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* 主体布局 */
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* 侧边栏样式 */
+        aside {
+            width: 240px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        aside h2 {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        aside ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        aside li {
+            margin: 10px 0;
+        }
+
+        aside a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        aside a:hover {
+            background: #f0f0f0;
+        }
+
+        /* 主内容区域 */
+        main {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* 解析器样式 */
+        .parser-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .parser-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .parser-box button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .parser-box button:hover {
+            background: #0056b3;
+        }
+
+        /* 文件列表样式 */
+        .file-list {
+            border-top: 1px solid #eee;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-name {
+            flex: 2;
+        }
+
+        .file-size {
+            color: #666;
+            margin-right: 20px;
+        }
+
+        .file-download {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        footer a {
+            color: #99d6ea;
+            text-decoration: none;
+        }
+
+        footer img {
+            vertical-align: middle;
+            margin: 10px 0;
+        }
+
+        /* SSL认证标签 */
+        #cc-myssl-id {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 70px;
+            height: 70px;
+            z-index: 99;
+        }
+
+        #cc-myssl-id img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="https://mine102.eu.org/about.html  ">关于本站</a></li> 
+                <li><a href="https://mine102.eu.org/download.html  ">下载中心</a></li> 
+                <li><a href="https://mine102.eu.org/mylianxi.html  ">联系站长</a></li> 
+                <li><a href="https://space.bilibili.com/3493260764908480  "  target="_blank">B站空间</a></li>
+                <li><a href="https://mine102.eu.org/Blacklist/index.html  ">黑名单</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 页面主体 -->
+    <div class="container">
+        <!-- 左侧导航 -->
+        <aside>
+            <ul>
+                <li><a href="https://mine102.eu.org/0.pdf  ">小学课件</a></li> 
+                <li><a href="https://mine102.eu.org/snhc.html  ">蛇年抽奖</a></li> 
+                <li><a href="https://liuxcstudio.github.io/kaishi.html  ">休闲游戏</a></li> 
+                <li><a href="https://jx.ziyuanshare.cc/user/parse  ">百度网盘解析</a></li>
+                <li><a href="https://qk.ziyuanshare.cc  ">夸克网盘解析</a></li>
+                <li><a href="https://vlink.cc/xiaobai_parse  ">夸克/百度网盘解析密码发布页</a></li>
+                <li><a href="https://mine102.eu.org/kaishi.html"></a>DOWNLOADMP3</li> 
+            </ul>
+        </aside>
+
+        <!-- 主内容区域 --
+    <footer>
+        <p>© 2021-2025 F.Power资源站 保留所有权利</p>
+        <p>所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx  ">GPLv3开源协议</a>  保护</p>
+        <p>技术支持：<a href="https://app.rainyun.com/dashboard  ">雨云计算服务</a>  优惠码：mochu</p>
+        <p>网站托管能力由Cloudflare驱动</p>
+        <img src="https://tool.lu/netcard/  "  alt="网络备案">
+    </footer>
+
+    <!-- SSL认证标签 -->
+    <div id="cc-myssl-id">
+        <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid  ">
+            <img src="https://static.myssl.com/res/images/myssl-id.png  " alt="SSL安全认证">
+        </a>
+    </div>
+</body>
+</html>
+
