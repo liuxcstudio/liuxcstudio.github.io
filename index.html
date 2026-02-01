@@ -15,8 +15,8 @@
 
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: #f5f7fa;
-            color: #333;
+            background: #121212;
+            color: #e0e0e0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -24,9 +24,10 @@
 
         /* 头部导航 */
         header {
-            background: #2c3e50;
-            color: white;
+            background: #1e1e1e;
+            color: #e0e0e0;
             padding: 15px 20px;
+            border-bottom: 1px solid #333;
         }
 
         nav ul {
@@ -58,16 +59,17 @@
         /* 侧边栏样式 */
         aside {
             width: 240px;
-            background: white;
+            background: #1e1e1e;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
             padding: 20px;
+            border: 1px solid #333;
         }
 
         aside h2 {
             font-size: 1.1em;
             margin-bottom: 15px;
-            color: #2c3e50;
+            color: #e0e0e0;
         }
 
         aside ul {
@@ -80,7 +82,7 @@
         }
 
         aside a {
-            color: #333;
+            color: #b0b0b0;
             text-decoration: none;
             padding: 8px 12px;
             display: block;
@@ -89,22 +91,24 @@
         }
 
         aside a:hover {
-            background: #f0f0f0;
+            background: #333;
+            color: #e0e0e0;
         }
 
         /* 主内容区域 */
         main {
             flex: 1;
-            background: white;
+            background: #1e1e1e;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
             padding: 20px;
+            border: 1px solid #333;
         }
 
         /* 解析器样式 */
         .parser-box {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
+            background: #2a2a2a;
+            border: 1px solid #444;
             border-radius: 6px;
             padding: 15px;
             margin-bottom: 20px;
@@ -113,16 +117,18 @@
         .parser-box input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
+            border: 1px solid #555;
             border-radius: 4px;
             margin-bottom: 10px;
             font-size: 1em;
+            background: #121212;
+            color: #e0e0e0;
         }
 
         .parser-box button {
-            background: #007bff;
-            color: white;
-            border: none;
+            background: #333;
+            color: #e0e0e0;
+            border: 1px solid #555;
             padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
@@ -130,12 +136,12 @@
         }
 
         .parser-box button:hover {
-            background: #0056b3;
+            background: #444;
         }
 
         /* 文件列表样式 */
         .file-list {
-            border-top: 1px solid #eee;
+            border-top: 1px solid #444;
         }
 
         .file-item {
@@ -143,7 +149,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #444;
         }
 
         .file-name {
@@ -151,26 +157,27 @@
         }
 
         .file-size {
-            color: #666;
+            color: #888;
             margin-right: 20px;
         }
 
         .file-download {
-            color: #28a745;
+            color: #4caf50;
             text-decoration: none;
         }
 
         /* 页脚样式 */
         footer {
-            background: #2c3e50;
-            color: white;
+            background: #1e1e1e;
+            color: #b0b0b0;
             padding: 20px;
             font-size: 0.9em;
             text-align: center;
+            border-top: 1px solid #333;
         }
 
         footer a {
-            color: #99d6ea;
+            color: #87ceeb;
             text-decoration: none;
         }
 
@@ -193,25 +200,145 @@
             width: 100%;
             height: 100%;
         }
+
+        /* 模拟命令行窗口样式 */
+        #terminal-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        #terminal-window {
+            width: 80%;
+            max-width: 800px;
+            height: 60%;
+            max-height: 500px;
+            background: #121212;
+            border: 2px solid #333;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        #terminal-header {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border-bottom: 1px solid #333;
+        }
+
+        #terminal-title {
+            font-weight: bold;
+        }
+
+        #terminal-close {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #terminal-close:hover {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        #terminal-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #00ff00;
+        }
+
+        #terminal-output {
+            margin-bottom: 10px;
+        }
+
+        #terminal-input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        #terminal-prompt {
+            margin-right: 5px;
+            color: #00ff00;
+        }
+
+        #terminal-input {
+            background: none;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            width: calc(100% - 20px);
+            outline: none;
+        }
+
+        .terminal-line {
+            margin-bottom: 5px;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">首页</a></li>
-                <li><a href="https://mine102.eu.org/about.html  ">关于本站</a></li> 
-                <li><a href="https://mine102.eu.org/download.html  ">下载中心</a></li> 
-                <li><a href="https://mine102.eu.org/mylianxi.html  ">联系站长</a></li> 
-                <li><a href="https://space.bilibili.com/3493260764908480  "  target="_blank">B站空间</a></li>
-                <li><a href="https://mine102.eu.org/Blacklist/index.html  ">黑名单</a></li> 
-            </ul>
-        </nav>
-    </header>
+    <!-- 模拟命令行窗口 -->
+    <div id="terminal-modal" style="display: none;">
+        <div id="terminal-window">
+            <div id="terminal-header">
+                <span id="terminal-title">系统登录</span>
+                <button id="terminal-close">&times;</button>
+            </div>
+            <div id="terminal-body">
+                <div id="terminal-output"></div>
+                <div id="terminal-input-line">
+                    <span id="terminal-prompt">$</span>
+                    <input type="text" id="terminal-input" autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- 页面主体 -->
-    <div class="container">
+    <!-- 页面主体容器 - 初始隐藏 -->
+    <div id="main-container" style="display: none;">
+        <!-- 顶部导航 -->
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="https://mine102.eu.org/about.html  ">关于本站</a></li> 
+                    <li><a href="https://mine102.eu.org/download.html  ">下载中心</a></li> 
+                    <li><a href="https://mine102.eu.org/mylianxi.html  ">联系站长</a></li> 
+                    <li><a href="https://space.bilibili.com/3493260764908480  "  target="_blank">B站空间</a></li>
+                    <li><a href="https://mine102.eu.org/Blacklist/index.html  ">黑名单</a></li> 
+                </ul>
+            </nav>
+        </header>
+
+        <!-- 页面主体 -->
+        <div class="container">
         <!-- 左侧导航 -->
         <aside>
             <ul>
@@ -252,6 +379,106 @@
             <img src="https://static.myssl.com/res/images/myssl-id.png  " alt="SSL安全认证">
         </a>
     </div>
+    </div>
+
+    <script>
+        // 获取用户IP地址
+        function getUserIP() {
+            return new Promise((resolve, reject) => {
+                // 使用免费的IP查询服务
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => resolve(data.ip))
+                    .catch(() => {
+                        // 如果无法获取IP，使用一个模拟的IP
+                        const mockIP = '192.168.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
+                        resolve(mockIP);
+                    });
+            });
+        }
+        
+        // 检查是否是首次访问
+        if (!localStorage.getItem('hasVisited')) {
+            // 显示命令行窗口
+            document.getElementById('terminal-modal').style.display = 'flex';
+            
+            // 标记已访问
+            localStorage.setItem('hasVisited', 'true');
+            
+            // 模拟命令行操作
+            setTimeout(() => {
+                const output = document.getElementById('terminal-output');
+                
+                // 显示系统信息
+                addTerminalLine('欢迎使用 F.Power资源站 系统');
+                addTerminalLine('系统版本: v1.0.0');
+                addTerminalLine('登录时间: ' + new Date().toLocaleString());
+                addTerminalLine('');
+                
+                // 获取用户IP作为用户名和密码
+                getUserIP().then(ip => {
+                    // 模拟输入用户名
+                    simulateTyping('用户名: ', () => {
+                        simulateTyping(ip, () => {
+                            addTerminalLine('');
+                            // 模拟输入密码
+                            simulateTyping('密码: ', () => {
+                                simulateTyping(ip, () => {
+                                    addTerminalLine('');
+                                    addTerminalLine('登录成功!');
+                                    addTerminalLine('欢迎回来, ' + ip + '!');
+                                    addTerminalLine('IP地址: ' + ip);
+                                    
+                                    // 3秒后关闭窗口并显示主界面
+                                    setTimeout(() => {
+                                        document.getElementById('terminal-modal').style.display = 'none';
+                                        document.getElementById('main-container').style.display = 'block';
+                                    }, 3000);
+                                });
+                            });
+                        });
+                    });
+                });
+            }, 500);
+        } else {
+            // 如果不是首次访问，直接显示主界面
+            document.getElementById('main-container').style.display = 'block';
+        }
+        
+        // 关闭按钮事件
+        document.getElementById('terminal-close').addEventListener('click', function() {
+            document.getElementById('terminal-modal').style.display = 'none';
+            document.getElementById('main-container').style.display = 'block';
+        });
+        
+        // 添加终端行
+        function addTerminalLine(text) {
+            const output = document.getElementById('terminal-output');
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.textContent = text;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        // 模拟打字效果
+        function simulateTyping(text, callback) {
+            const input = document.getElementById('terminal-input');
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    input.value += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100); // 控制打字速度
+                } else {
+                    if (callback) callback();
+                }
+            }
+            
+            type();
+        }
+    </script>
 </body>
 </html>
 
