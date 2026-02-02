@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>休闲游戏 - F.Power资源�?/title>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <title>休闲游戏 - F.Power资源站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.1)',
+                        glassBorder: 'rgba(255, 255, 255, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -13,11 +28,13 @@
         }
 
         body {
-            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #1a1a1a;
-            color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
         }
 
@@ -28,86 +45,235 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(255,255,255,0.02) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
+            background: url('https://picsum.photos/seed/game-bg/1920/1080') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: -1;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            padding: 60px 40px;
+        /* 玻璃拟态导航 */
+        .glass-nav {
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .glass-nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .glass-nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
             position: relative;
-            z-index: 2;
+            overflow: hidden;
         }
 
+        .glass-nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .glass-nav a:hover::before {
+            left: 100%;
+        }
+
+        .glass-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-nav .active {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 玻璃拟态容器 */
+        .glass-container {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(4px);
+        }
+
+        .glass-card h3 {
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .glass-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* 主体布局 */
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 侧边栏样式 */
+        aside {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        aside h2 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        aside ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        aside li {
+            margin: 8px 0;
+        }
+
+        aside a {
+            color: #b0b0b0;
+            text-decoration: none;
+            padding: 10px 12px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        aside a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        aside a:hover::before {
+            left: 100%;
+        }
+
+        aside a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            transform: translateX(4px);
+        }
+
+        /* 主内容区域 */
+        main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 游戏工坊样式 */
         .hero {
             text-align: center;
-            margin-bottom: 80px;
-            position: relative;
+            margin-bottom: 40px;
         }
 
         .hero h1 {
-            font-size: 64px;
-            font-weight: 900;
-            color: #00d4ff;
-            margin-bottom: 24px;
-            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
-            letter-spacing: 4px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, #00d4ff, #ff00cc);
-            border-radius: 2px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 20px;
-            color: #a0a0a0;
-            line-height: 1.8;
+            font-size: 1.2rem;
+            color: #b0b0b0;
             max-width: 700px;
             margin: 0 auto;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .categories {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+            line-height: 1.6;
         }
 
         .category-tabs {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
-            position: relative;
         }
 
         .category-btn {
-            padding: 14px 32px;
-            border: 3px solid #2a2a2a;
-            background: #1a1a1a;
-            color: #555;
-            font-size: 14px;
-            font-weight: 700;
+            padding: 12px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
         }
@@ -119,8 +285,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,107,107,0.2), transparent);
-            transition: left 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
         }
 
         .category-btn:hover::before {
@@ -128,55 +294,38 @@
         }
 
         .category-btn:hover {
-            color: #00d4ff;
-            border-color: #00d4ff;
+            color: #e0e0e0;
+            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
         .category-btn.active {
-            color: #ff00cc;
-            border-color: #ff00cc;
-            background: rgba(78, 205, 196, 0.1);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .grid-layout::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255,255,255,0.01) 2px,
-                    rgba(255,255,255,0.01) 4px
-                );
-            pointer-events: none;
-            z-index: -1;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
         }
 
         .game-card {
-            background: #1a1a1a;
-            border: 2px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.8s cubic-bezier(0.42, 0, 0.58, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 280px;
+            min-height: 240px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -189,16 +338,17 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #00d4ff, #ff00cc);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+            transition: transform 0.3s ease;
         }
 
         .game-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            border-color: #00d4ff;
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .game-card:hover::before {
@@ -206,17 +356,17 @@
         }
 
         .game-icon {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto 20px;
-            background: radial-gradient(circle at 30% 30%, #00d4ff, #ff00cc);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            color: white;
-            box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
+            font-size: 32px;
+            color: #e0e0e0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -230,7 +380,7 @@
             height: 200%;
             background: conic-gradient(
                 transparent, transparent, transparent, 
-                #00d4ff, #ff00cc, #00d4ff
+                rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3)
             );
             animation: rotate 3s linear infinite;
         }
@@ -241,37 +391,32 @@
         }
 
         .game-card h3 {
-            font-size: 20px;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            color: #e0e0e0;
+            margin-bottom: 10px;
         }
 
         .game-card p {
-            font-size: 12px;
-            color: #777;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-weight: 300;
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+            margin-bottom: 15px;
         }
 
         .play-btn {
             display: inline-block;
-            background: linear-gradient(135deg, #00d4ff, #ff00cc);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            color: #e0e0e0;
+            padding: 8px 20px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
-            transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
-            border: none;
-            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .play-btn::before {
@@ -281,8 +426,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
         }
 
         .play-btn:hover::before {
@@ -290,150 +435,220 @@
         }
 
         .play-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
 
-        .footer {
+        /* 页脚样式 */
+        footer {
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #b0b0b0;
+            padding: 24px;
+            font-size: 0.9rem;
             text-align: center;
-            color: #555;
-            font-size: 11px;
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #2a2a2a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
         }
 
-        @media (max-width: 1024px) {
-            .grid-layout {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        footer a {
+            color: #87ceeb;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
+        footer a:hover {
+            color: #a8d8ff;
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .grid-layout {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
+            .container {
+                flex-direction: column;
+                padding: 15px;
             }
-
+            
+            aside {
+                width: 100%;
+            }
+            
             .hero h1 {
-                font-size: 42px;
+                font-size: 2.5rem;
             }
-
-            .hero p {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
+            
             .grid-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 32px;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>游戏工坊</h1>
-            <p>这里没有千篇一律的模板，只有设计师的个性表达。每款游戏都是一个独特的数字艺术品�?/p>
-        </div>
+    <!-- 顶部导航 -->
+    <header>
+        <nav class="glass-nav">
+            <ul>
+                <li><a href="/"><i class="fas fa-home mr-2"></i>首页</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle mr-2"></i>关于本站</a></li>
+                <li><a href="https://mine102.eu.org/download.html"><i class="fas fa-download mr-2"></i>下载中心</a></li> 
+                <li><a href="https://mine102.eu.org/mylianxi.html"><i class="fas fa-envelope mr-2"></i>联系站长</a></li> 
+                <li><a href="https://space.bilibili.com/3493260764908480" target="_blank"><i class="fab fa-bilibili mr-2"></i>B站空间</a></li>
+                <li><a href="https://mine102.eu.org/Blacklist/index.html"><i class="fas fa-shield-alt mr-2"></i>黑名单</a></li> 
+            </ul>
+        </nav>
+    </header>
 
-        <div class="categories">
+    <!-- 页面主体 -->
+    <div class="container">
+        <!-- 左侧导航 -->
+        <aside>
+            <div class="glass-container">
+                <h2><i class="fas fa-gamepad mr-2"></i>游戏分类</h2>
+                <ul>
+                    <li><a href="#" onclick="filterGames('all')"><i class="fas fa-star mr-2"></i>全部游戏</a></li>
+                    <li><a href="#" onclick="filterGames('puzzle')"><i class="fas fa-brain mr-2"></i>益智游戏</a></li>
+                    <li><a href="#" onclick="filterGames('racing')"><i class="fas fa-flag-checkered mr-2"></i>竞速游戏</a></li>
+                    <li><a href="#" onclick="filterGames('action')"><i class="fas fa-crosshairs mr-2"></i>动作游戏</a></li>
+                    <li><a href="#" onclick="filterGames('arcade')"><i class="fas fa-gamepad mr-2"></i>街机游戏</a></li>
+                </ul>
+            </div>
+            
+            <div class="glass-container">
+                <h2><i class="fas fa-trophy mr-2"></i>热门推荐</h2>
+                <div class="glass-card">
+                    <h3>2048</h3>
+                    <p>数字的诗意，合并的艺术</p>
+                </div>
+                <div class="glass-card">
+                    <h3>俄罗斯方块</h3>
+                    <p>像素的舞蹈，永恒的经典</p>
+                </div>
+                <div class="glass-card">
+                    <h3>五子棋</h3>
+                    <p>黑白的哲学，智慧的博弈</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <main>
+            <!-- 英雄区域 -->
+            <div class="hero">
+                <h1>游戏工坊</h1>
+                <p>这里没有千篇一律的模板，只有设计师的个性表达。每款游戏都是一个独特的数字艺术品。</p>
+            </div>
+
+            <!-- 分类标签 -->
             <div class="category-tabs">
                 <button class="category-btn active" onclick="filterGames('all')">全部</button>
                 <button class="category-btn" onclick="filterGames('puzzle')">益智</button>
-                <button class="category-btn" onclick="filterGames('racing')">竞�?/button>
+                <button class="category-btn" onclick="filterGames('racing')">竞速</button>
                 <button class="category-btn" onclick="filterGames('action')">动作</button>
                 <button class="category-btn" onclick="filterGames('arcade')">街机</button>
             </div>
-        </div>
 
-        <div class="grid-layout" id="gridLayout">
-            <div class="game-card" onclick="window.open('game/2048-master/2048.html', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:8-ball" data-width="40" data-height="40"></span>
+            <!-- 游戏网格 -->
+            <div class="grid-layout" id="gridLayout">
+                <div class="game-card" onclick="window.open('game/2048-master/2048.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-2"></i>
+                    </div>
+                    <h3>2048</h3>
+                    <p>数字的诗意，合并的艺术</p>
+                    <a href="game/2048-master/2048.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>2048</h3>
-                <p>数字的诗意，合并的艺�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('game/canvas-tetris-master/fangkuai.html', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:crystal-shine" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('game/canvas-tetris-master/fangkuai.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>俄罗斯方块</h3>
+                    <p>像素的舞蹈，永恒的经典</p>
+                    <a href="game/canvas-tetris-master/fangkuai.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>俄罗斯方�?/h3>
-                <p>像素的舞蹈，永恒的经�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('game/gobang-main/gobang-main', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:board-game" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('game/gobang-main/gobang-main/index.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <h3>五子棋</h3>
+                    <p>黑白的哲学，智慧的博弈</p>
+                    <a href="game/gobang-main/gobang-main/index.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>五子�?/h3>
-                <p>黑白的哲学，智慧的博�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('game/javascript-racer-master/v4.final.html', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:race-car" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('game/javascript-racer-master/v4.final.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-flag-checkered"></i>
+                    </div>
+                    <h3>飞车竞速</h3>
+                    <p>速度的狂想，引擎的咆哮</p>
+                    <a href="game/javascript-racer-master/v4.final.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>飞车竞�?/h3>
-                <p>速度的狂想，引擎的咆�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('game/pacman-canvas-master/index.htm', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:snake" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('game/pacman-canvas-master/index.htm', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3>吃豆人</h3>
+                    <p>像素的贪欲，生命的循环</p>
+                    <a href="game/pacman-canvas-master/index.htm" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>贪吃�?/h3>
-                <p>像素的贪欲，生命的循�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('game/HexGL-master/hexgl.html', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:racing-microphone" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('game/HexGL-master/hexgl.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>HexGL</h3>
+                    <p>3D的幻象，速度的极限</p>
+                    <a href="game/HexGL-master/hexgl.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>HexGL</h3>
-                <p>3D的幻象，速度的极�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('xiaoqiu.html', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:ball" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('xiaoqiu.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <h3>小球游戏</h3>
+                    <p>弹跳的韵律，物理的诗篇</p>
+                    <a href="xiaoqiu.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>小球游戏</h3>
-                <p>弹跳的韵律，物理的诗�?/p>
-                <button class="play-btn">开始游�?/button>
-            </div>
 
-            <div class="game-card" onclick="window.open('game/Astray-master/index.html', '_blank')">
-                <div class="game-icon">
-                    <span class="iconify" data-icon="game-icons:astray" data-width="40" data-height="40"></span>
+                <div class="game-card" onclick="window.open('game/Astray-master/index.html', '_blank')">
+                    <div class="game-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Astray</h3>
+                    <p>宇宙的迷途，解谜的旅程</p>
+                    <a href="game/Astray-master/index.html" target="_blank" class="play-btn">开始游戏</a>
                 </div>
-                <h3>Astray</h3>
-                <p>宇宙的迷途，解谜的旅�?/p>
-                <button class="play-btn">开始游�?/button>
             </div>
-        </div>
-
-        <div class="footer">
-            <p>© 2021-2025 F.Power资源�?保留所有权�?/p>
-            <p>所有文件受GPLv3开源协议保�?/p>
-            <p>设计师的个性表�?| 技术支持：雨云计算服务 优惠码：mochu</p>
-        </div>
+        </main>
     </div>
 
+    <!-- 页脚 -->
+    <footer>
+        <p class="mb-2">© 2021-2025 F.Power资源站 保留所有权利</p>
+        <p class="mb-2">所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx" class="text-blue-400 hover:text-blue-300">GPLv3开源协议</a> 保护</p>
+        <p class="mb-2">技术支持：<a href="https://app.rainyun.com/dashboard" class="text-blue-400 hover:text-blue-300">雨云计算服务</a> 优惠码：mochu</p>
+        <p>网站托管能力由Cloudflare驱动</p>
+        <img src="https://tool.lu/netcard/" alt="网络备案" class="mt-3">
+    </footer>
+
     <script>
+        // 预加载游戏页面以提高性能
+        function preloadGames() {
+            const gameLinks = document.querySelectorAll('.game-card');
+            gameLinks.forEach(link => {
+                const href = link.querySelector('a').href;
+                const linkElement = document.createElement('link');
+                linkElement.rel = 'prefetch';
+                linkElement.href = href;
+                document.head.appendChild(linkElement);
+            });
+        }
+
+        // 游戏筛选功能
         function filterGames(category) {
             const cards = document.querySelectorAll('.game-card');
             const buttons = document.querySelectorAll('.category-btn');
@@ -450,16 +665,16 @@
                     
                     switch(category) {
                         case 'puzzle':
-                            show = ['2048', '俄罗斯方�?, '五子�?, '贪吃�?].some(name => gameName.includes(name));
+                            show = ['2048', '俄罗斯方块', '五子棋', '吃豆人'].some(name => gameName.includes(name));
                             break;
                         case 'racing':
-                            show = ['飞车竞�?, 'HexGL', '小球游戏'].some(name => gameName.includes(name));
+                            show = ['飞车竞速', 'HexGL', '小球游戏'].some(name => gameName.includes(name));
                             break;
                         case 'action':
                             show = ['小球游戏', 'Astray'].some(name => gameName.includes(name));
                             break;
                         case 'arcade':
-                            show = ['2048', '俄罗斯方�?, '五子�?, '飞车竞�?, '贪吃�?, 'HexGL', '小球游戏', 'Astray'].some(name => gameName.includes(name));
+                            show = ['2048', '俄罗斯方块', '五子棋', '飞车竞速', '吃豆人', 'HexGL', '小球游戏', 'Astray'].some(name => gameName.includes(name));
                             break;
                     }
                     
@@ -468,14 +683,103 @@
             });
         }
 
-        // 加载 Iconfiy 图标
-        window.addEventListener('load', function() {
-            Iconify.addIcon('game-icons:8-ball', {
-                body: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>',
-                width: 24,
-                height: 24
+        // 优化的页面加载动画
+        function initGameCards() {
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach((card, index) => {
+                // 使用 Intersection Observer 优化性能
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            card.style.transition = 'all 0.5s ease';
+                            
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, index * 50);
+                            
+                            observer.disconnect();
+                        }
+                    });
+                });
+                
+                observer.observe(card);
+            });
+        }
+
+        // 优化的页面加载
+        document.addEventListener('DOMContentLoaded', function() {
+            // 预加载游戏页面
+            preloadGames();
+            
+            // 初始化游戏卡片动画
+            initGameCards();
+            
+            // 添加键盘快捷键支持
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.category-btn').forEach(btn => {
+                        if (btn.classList.contains('active')) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                }
             });
         });
+
+        // 页面可见性优化
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                // 页面隐藏时暂停动画
+                document.querySelectorAll('.game-card').forEach(card => {
+                    card.style.transition = 'none';
+                });
+            } else {
+                // 页面重新可见时恢复动画
+                setTimeout(() => {
+                    document.querySelectorAll('.game-card').forEach(card => {
+                        card.style.transition = 'all 0.5s ease';
+                    });
+                }, 100);
+            }
+        });
+
+        // 添加页面加载进度指示器
+        function addLoadingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'loading-indicator';
+            indicator.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #4CAF50, #45a049);
+                z-index: 9999;
+                transition: width 0.3s ease;
+            `;
+            document.body.appendChild(indicator);
+            
+            // 模拟加载进度
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress > 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        indicator.style.opacity = '0';
+                        setTimeout(() => indicator.remove(), 300);
+                    }, 500);
+                }
+                indicator.style.width = progress + '%';
+            }, 200);
+        }
+
+        // 在页面开始加载时显示进度指示器
+        window.addEventListener('load', addLoadingIndicator);
     </script>
 </body>
 </html>

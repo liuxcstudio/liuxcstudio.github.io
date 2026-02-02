@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/favicon.ico" rel="shortcut icon">
     <title>F.Power资源站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.1)',
+                        glassBorder: 'rgba(255, 255, 255, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* 基础样式 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,38 +29,127 @@
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #121212;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
             color: #e0e0e0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* 头部导航 */
-        header {
-            background: #1e1e1e;
-            color: #e0e0e0;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/seed/glass-bg/1920/1080') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* 玻璃拟态导航 */
+        .glass-nav {
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             padding: 15px 20px;
-            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        nav ul {
+        .glass-nav ul {
             display: flex;
             gap: 20px;
             list-style: none;
+            flex-wrap: wrap;
         }
 
-        nav a {
-            color: white;
+        .glass-nav a {
+            color: #e0e0e0;
             text-decoration: none;
             padding: 8px 12px;
-            border-radius: 4px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
 
-        nav a:hover {
-            background: rgba(255,255,255,0.1);
+        .glass-nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .glass-nav a:hover::before {
+            left: 100%;
+        }
+
+        .glass-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 玻璃拟态容器 */
+        .glass-container {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(4px);
+        }
+
+        .glass-card h3 {
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .glass-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* 主体布局 */
@@ -54,22 +158,24 @@
             flex: 1;
             padding: 20px;
             gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         /* 侧边栏样式 */
         aside {
-            width: 240px;
-            background: #1e1e1e;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-            padding: 20px;
-            border: 1px solid #333;
+            width: 280px;
+            flex-shrink: 0;
         }
 
         aside h2 {
-            font-size: 1.1em;
+            font-size: 1.1rem;
             margin-bottom: 15px;
             color: #e0e0e0;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         aside ul {
@@ -78,107 +184,173 @@
         }
 
         aside li {
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         aside a {
             color: #b0b0b0;
             text-decoration: none;
-            padding: 8px 12px;
+            padding: 10px 12px;
             display: block;
-            border-radius: 4px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        aside a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        aside a:hover::before {
+            left: 100%;
         }
 
         aside a:hover {
-            background: #333;
+            background: rgba(255, 255, 255, 0.1);
             color: #e0e0e0;
+            transform: translateX(4px);
         }
 
         /* 主内容区域 */
         main {
             flex: 1;
-            background: #1e1e1e;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-            padding: 20px;
-            border: 1px solid #333;
+            min-width: 0;
         }
 
         /* 解析器样式 */
         .parser-box {
-            background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 20px;
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .parser-box:hover {
+            background: rgba(42, 42, 42, 0.8);
+            transform: translateY(-2px);
         }
 
         .parser-box input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            font-size: 1em;
-            background: #121212;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.3);
             color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .parser-box input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
         }
 
         .parser-box button {
-            background: #333;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             color: #e0e0e0;
-            border: 1px solid #555;
-            padding: 10px 20px;
-            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .parser-box button:hover {
-            background: #444;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* 文件列表样式 */
         .file-list {
-            border-top: 1px solid #444;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
         }
 
         .file-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #444;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 14px 16px;
+            margin: 0 -16px;
+            border-radius: 8px;
         }
 
         .file-name {
             flex: 2;
+            color: #e0e0e0;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .file-size {
             color: #888;
             margin-right: 20px;
+            font-size: 0.85rem;
         }
 
         .file-download {
             color: #4caf50;
             text-decoration: none;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .file-download:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: scale(1.05);
         }
 
         /* 页脚样式 */
         footer {
-            background: #1e1e1e;
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             color: #b0b0b0;
-            padding: 20px;
-            font-size: 0.9em;
+            padding: 24px;
+            font-size: 0.9rem;
             text-align: center;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
         }
 
         footer a {
             color: #87ceeb;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #a8d8ff;
         }
 
         footer img {
@@ -189,8 +361,8 @@
         /* SSL认证标签 */
         #cc-myssl-id {
             position: fixed;
-            right: 0;
-            bottom: 0;
+            right: 20px;
+            bottom: 20px;
             width: 70px;
             height: 70px;
             z-index: 99;
@@ -199,6 +371,12 @@
         #cc-myssl-id img {
             width: 100%;
             height: 100%;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        #cc-myssl-id img:hover {
+            transform: scale(1.1);
         }
 
         /* 模拟命令行窗口样式 */
@@ -208,41 +386,43 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10000;
+            backdrop-filter: blur(4px);
         }
 
         #terminal-window {
-            width: 80%;
-            max-width: 800px;
-            height: 60%;
-            max-height: 500px;
-            background: #121212;
-            border: 2px solid #333;
-            border-radius: 5px;
+            width: 90%;
+            max-width: 900px;
+            height: 70%;
+            max-height: 600px;
+            background: rgba(18, 18, 18, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         #terminal-header {
-            background: #1e1e1e;
+            background: rgba(30, 30, 46, 0.95);
             color: #e0e0e0;
-            padding: 8px 15px;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: 'Courier New', monospace;
             font-size: 14px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         #terminal-title {
             font-weight: bold;
+            font-size: 0.95rem;
         }
 
         #terminal-close {
@@ -251,22 +431,24 @@
             color: #e0e0e0;
             font-size: 20px;
             cursor: pointer;
-            padding: 0;
-            width: 25px;
-            height: 25px;
+            padding: 4px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
         #terminal-close:hover {
-            background: #333;
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
         }
 
         #terminal-body {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
             font-family: 'Courier New', monospace;
             font-size: 14px;
@@ -280,11 +462,14 @@
         #terminal-input-line {
             display: flex;
             align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0, 255, 0, 0.2);
         }
 
         #terminal-prompt {
-            margin-right: 5px;
+            margin-right: 8px;
             color: #00ff00;
+            font-weight: bold;
         }
 
         #terminal-input {
@@ -300,6 +485,28 @@
         .terminal-line {
             margin-bottom: 5px;
             white-space: pre-wrap;
+            line-height: 1.4;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            aside {
+                width: 100%;
+            }
+            
+            .glass-nav ul {
+                gap: 10px;
+            }
+            
+            .glass-nav a {
+                padding: 6px 8px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -325,159 +532,233 @@
     <div id="main-container" style="display: none;">
         <!-- 顶部导航 -->
         <header>
-            <nav>
+            <nav class="glass-nav">
                 <ul>
-                    <li><a href="/">首页</a></li>
-                    <li><a href="https://mine102.eu.org/about.html  ">关于本站</a></li> 
-                    <li><a href="https://mine102.eu.org/download.html  ">下载中心</a></li> 
-                    <li><a href="https://mine102.eu.org/mylianxi.html  ">联系站长</a></li> 
-                    <li><a href="https://space.bilibili.com/3493260764908480  "  target="_blank">B站空间</a></li>
-                    <li><a href="https://mine102.eu.org/Blacklist/index.html  ">黑名单</a></li> 
+                    <li><a href="/"><i class="fas fa-home mr-2"></i>首页</a></li>
+                    <li><a href="https://mine102.eu.org/about.html"><i class="fas fa-info-circle mr-2"></i>关于本站</a></li> 
+                    <li><a href="https://mine102.eu.org/download.html"><i class="fas fa-download mr-2"></i>下载中心</a></li> 
+                    <li><a href="https://mine102.eu.org/mylianxi.html"><i class="fas fa-envelope mr-2"></i>联系站长</a></li> 
+                    <li><a href="https://space.bilibili.com/3493260764908480" target="_blank"><i class="fab fa-bilibili mr-2"></i>B站空间</a></li>
+                    <li><a href="https://mine102.eu.org/Blacklist/index.html"><i class="fas fa-shield-alt mr-2"></i>黑名单</a></li> 
                 </ul>
             </nav>
         </header>
 
         <!-- 页面主体 -->
         <div class="container">
-        <!-- 左侧导航 -->
-        <aside>
-            <ul>
-                <li><a href="https://mine102.eu.org/0.pdf  ">小学课件</a></li> 
-                <li><a href="https://mine102.eu.org/snhc.html  ">蛇年抽奖</a></li> 
-                <li><a href="https://liuxcstudio.github.io/kaishi.html" target="_blank">选游戏界面</a></li> 
-                <li><a href="https://jx.ziyuanshare.cc/user/parse  ">百度网盘解析</a></li>
-                <li><a href="https://qk.ziyuanshare.cc  ">夸克网盘解析</a></li>
-                <li><a href="https://vlink.cc/xiaobai_parse  ">夸克/百度网盘解析密码发布页</a></li>
-                <li><a href="https://mine102.eu.org/kaishi.html"></a>DOWNLOADMP3</li> 
-            </ul>
-            
-            <!-- 游戏索引 -->
-            <h2 style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 15px;">游戏索引</h2>
-            <ul>
-                <li><a href="/game/xiaoqiu.html" target="_blank">小球游戏</a></li>
-                <li><a href="/game/2048-master/2048.html" target="_blank">2048游戏</a></li>
-                <li><a href="/game/canvas-tetris-master/fangkuai.html" target="_blank">俄罗斯方块</a></li>
-                <li><a href="/game/gobang-main/gobang-main/index.html" target="_blank">五子棋</a></li>
-                <li><a href="/game/HexGL-master/hexgl.html" target="_blank">HexGL赛车</a></li>
-                <li><a href="/game/javascript-racer-master/saiche.html" target="_blank">赛车游戏</a></li>
-                <li><a href="/game/pacman-canvas-master/index.htm" target="_blank">吃豆人</a></li>
-            </ul>
-        </aside>
+            <!-- 左侧导航 -->
+            <aside>
+                <div class="glass-container">
+                    <h2><i class="fas fa-link mr-2"></i>快速链接</h2>
+                    <ul>
+                        <li><a href="https://mine102.eu.org/0.pdf"><i class="fas fa-file-pdf mr-2"></i>小学课件</a></li> 
+                        <li><a href="https://mine102.eu.org/snhc.html"><i class="fas fa-gift mr-2"></i>蛇年抽奖</a></li> 
+                        <li><a href="https://liuxcstudio.github.io/kaishi.html" target="_blank"><i class="fas fa-gamepad mr-2"></i>选游戏界面</a></li> 
+                        <li><a href="https://jx.ziyuanshare.cc/user/parse"><i class="fas fa-cloud-download-alt mr-2"></i>百度网盘解析</a></li>
+                        <li><a href="https://qk.ziyuanshare.cc"><i class="fas fa-cloud-download-alt mr-2"></i>夸克网盘解析</a></li>
+                        <li><a href="https://vlink.cc/xiaobai_parse"><i class="fas fa-key mr-2"></i>解析密码发布页</a></li>
+                        <li><a href="https://mine102.eu.org/kaishi.html"><i class="fas fa-music mr-2"></i>DOWNLOADMP3</a></li> 
+                    </ul>
+                    
 
-        <!-- 主内容区域 --
-    <footer>
-        <p>© 2021-2025 F.Power资源站 保留所有权利</p>
-        <p>所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx  ">GPLv3开源协议</a>  保护</p>
-        <p>技术支持：<a href="https://app.rainyun.com/dashboard  ">雨云计算服务</a>  优惠码：mochu</p>
-        <p>网站托管能力由Cloudflare驱动</p>
-        <img src="https://tool.lu/netcard/  "  alt="网络备案">
-    </footer>
+                </div>
+            </aside>
 
-    <!-- SSL认证标签 -->
-    <div id="cc-myssl-id">
-        <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid  ">
-            <img src="https://static.myssl.com/res/images/myssl-id.png  " alt="SSL安全认证">
-        </a>
-    </div>
+            <!-- 主内容区域 -->
+            <main>
+                <!-- 英雄区域 -->
+                <div class="glass-container mb-6">
+                    <h1 class="text-4xl font-bold text-white mb-4">F.Power资源站</h1>
+                    <p class="text-lg text-gray-300 mb-6">发现、分享、创造 - 让学习和娱乐触手可及</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="glass-card">
+                            <h3>游戏中心</h3>
+                            <p>8款经典网页游戏</p>
+                        </button>
+                        <button class="glass-card">
+                            <h3>资源下载</h3>
+                            <p>高速下载，稳定可靠</p>
+                        </button>
+                        <button class="glass-card">
+                            <h3>社区互动</h3>
+                            <p>交流分享，共同成长</p>
+                        </button>
+                    </div>
+                </div>
+
+
+            </main>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <p class="mb-2">© 2021-2025 F.Power资源站 保留所有权利</p>
+            <p class="mb-2">所有文件受 <a href="https://mine102.eu.org/GPL3.0.docx">GPLv3开源协议</a> 保护</p>
+            <p class="mb-2">技术支持：<a href="https://app.rainyun.com/dashboard">雨云计算服务</a> 优惠码：mochu</p>
+            <p>网站托管能力由Cloudflare驱动</p>
+            <img src="https://tool.lu/netcard/" alt="网络备案" class="mt-3">
+        </footer>
+
+        <!-- SSL认证标签 -->
+        <div id="cc-myssl-id">
+            <a href="https://myssl.com/liuxcstudio.github.io?from=mysslid">
+                <img src="https://static.myssl.com/res/images/myssl-id.png" alt="SSL安全认证">
+            </a>
+        </div>
     </div>
 
     <script>
-        // 获取用户IP地址
-        function getUserIP() {
-            return new Promise((resolve, reject) => {
-                // 使用免费的IP查询服务
-                fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => resolve(data.ip))
-                    .catch(() => {
-                        // 如果无法获取IP，使用一个模拟的IP
-                        const mockIP = '192.168.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
-                        resolve(mockIP);
-                    });
+        // 性能优化：预加载关键资源
+        function preloadCriticalResources() {
+            const criticalLinks = [
+                'https://picsum.photos/seed/glass-bg/1920/1080',
+                'https://picsum.photos/seed/game-bg/1920/1080',
+                'https://picsum.photos/seed/about-bg/1920/1080'
+            ];
+            
+            criticalLinks.forEach(url => {
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = url;
+                document.head.appendChild(link);
             });
         }
-        
-        // 检查是否是首次访问
-        if (!localStorage.getItem('hasVisited')) {
-            // 显示命令行窗口
-            document.getElementById('terminal-modal').style.display = 'flex';
-            
-            // 标记已访问
-            localStorage.setItem('hasVisited', 'true');
-            
-            // 模拟命令行操作
-            setTimeout(() => {
-                const output = document.getElementById('terminal-output');
+
+        // 优化的终端系统
+        class OptimizedTerminal {
+            constructor() {
+                this.output = document.getElementById('terminal-output');
+                this.input = document.getElementById('terminal-input');
+                this.modal = document.getElementById('terminal-modal');
+                this.mainContainer = document.getElementById('main-container');
+            }
+
+            async showWelcome() {
+                const messages = [
+                    '欢迎使用 F.Power资源站 系统',
+                    '系统版本: v2.0.0',
+                    '登录时间: ' + new Date().toLocaleString(),
+                    ''
+                ];
                 
-                // 显示系统信息
-                addTerminalLine('欢迎使用 F.Power资源站 系统');
-                addTerminalLine('系统版本: v1.0.0');
-                addTerminalLine('登录时间: ' + new Date().toLocaleString());
-                addTerminalLine('');
+                for (const message of messages) {
+                    await this.addLine(message);
+                }
                 
-                // 获取用户IP作为用户名和密码
-                getUserIP().then(ip => {
-                    // 模拟输入用户名
-                    simulateTyping('用户名: ', () => {
-                        simulateTyping(ip, () => {
-                            addTerminalLine('');
-                            // 模拟输入密码
-                            simulateTyping('密码: ', () => {
-                                simulateTyping(ip, () => {
-                                    addTerminalLine('');
-                                    addTerminalLine('登录成功!');
-                                    addTerminalLine('欢迎回来, ' + ip + '!');
-                                    addTerminalLine('IP地址: ' + ip);
-                                    
-                                    // 3秒后关闭窗口并显示主界面
-                                    setTimeout(() => {
-                                        document.getElementById('terminal-modal').style.display = 'none';
-                                        document.getElementById('main-container').style.display = 'block';
-                                    }, 3000);
-                                });
-                            });
-                        });
-                    });
+                const ip = await this.getUserIP();
+                await this.simulateTyping('用户名: ', ip);
+                await this.simulateTyping('密码: ', ip);
+                
+                await this.addLine('');
+                await this.addLine('登录成功!');
+                await this.addLine('欢迎回来, ' + ip + '!');
+                await this.addLine('IP地址: ' + ip);
+                
+                setTimeout(() => {
+                    this.modal.style.display = 'none';
+                    this.mainContainer.style.display = 'block';
+                }, 3000);
+            }
+
+            async addLine(text) {
+                return new Promise(resolve => {
+                    const line = document.createElement('div');
+                    line.className = 'terminal-line';
+                    line.textContent = text;
+                    this.output.appendChild(line);
+                    this.output.scrollTop = this.output.scrollHeight;
+                    setTimeout(resolve, 100);
                 });
-            }, 500);
-        } else {
-            // 如果不是首次访问，直接显示主界面
-            document.getElementById('main-container').style.display = 'block';
-        }
-        
-        // 关闭按钮事件
-        document.getElementById('terminal-close').addEventListener('click', function() {
-            document.getElementById('terminal-modal').style.display = 'none';
-            document.getElementById('main-container').style.display = 'block';
-        });
-        
-        // 添加终端行
-        function addTerminalLine(text) {
-            const output = document.getElementById('terminal-output');
-            const line = document.createElement('div');
-            line.className = 'terminal-line';
-            line.textContent = text;
-            output.appendChild(line);
-            output.scrollTop = output.scrollHeight;
-        }
-        
-        // 模拟打字效果
-        function simulateTyping(text, callback) {
-            const input = document.getElementById('terminal-input');
-            let i = 0;
-            
-            function type() {
-                if (i < text.length) {
-                    input.value += text.charAt(i);
-                    i++;
-                    setTimeout(type, 100); // 控制打字速度
-                } else {
-                    if (callback) callback();
+            }
+
+            async simulateTyping(prompt, value) {
+                await this.addLine(prompt + value);
+            }
+
+            async getUserIP() {
+                try {
+                    const response = await fetch('https://api.ipify.org?format=json');
+                    const data = await response.json();
+                    return data.ip;
+                } catch {
+                    return '192.168.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255);
                 }
             }
-            
-            type();
         }
+
+        // 页面加载优化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 预加载关键资源
+            preloadCriticalResources();
+            
+            // 初始化终端系统
+            const terminal = new OptimizedTerminal();
+            
+            // 检查是否是首次访问
+            if (!localStorage.getItem('hasVisited')) {
+                localStorage.setItem('hasVisited', 'true');
+                terminal.showWelcome();
+            } else {
+                terminal.mainContainer.style.display = 'block';
+            }
+            
+            // 优化关闭按钮事件
+            document.getElementById('terminal-close').addEventListener('click', function() {
+                terminal.modal.style.display = 'none';
+                terminal.mainContainer.style.display = 'block';
+            });
+        });
+
+        // 添加页面可见性优化
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                // 页面隐藏时暂停动画
+                document.querySelectorAll('.glass-card, .game-card').forEach(card => {
+                    card.style.transition = 'none';
+                });
+            } else {
+                // 页面重新可见时恢复动画
+                setTimeout(() => {
+                    document.querySelectorAll('.glass-card, .game-card').forEach(card => {
+                        card.style.transition = 'all 0.3s ease';
+                    });
+                }, 100);
+            }
+        });
+
+        // 添加页面加载进度指示器
+        function addLoadingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'loading-indicator';
+            indicator.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #4CAF50, #45a049);
+                z-index: 9999;
+                transition: width 0.3s ease;
+            `;
+            document.body.appendChild(indicator);
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 25;
+                if (progress > 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        indicator.style.opacity = '0';
+                        setTimeout(() => indicator.remove(), 300);
+                    }, 500);
+                }
+                indicator.style.width = progress + '%';
+            }, 150);
+        }
+
+        // 在页面开始加载时显示进度指示器
+        window.addEventListener('load', addLoadingIndicator);
     </script>
 </body>
 </html>
